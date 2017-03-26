@@ -1,32 +1,22 @@
+extends templates/flow-template.jade
 
+block title
+  h2 Cash Flow: 2015-17 Adopted Budget
 
-section.hero-unit
-  .container
-    h1.main-header 2016-17 Midcycle Adjusted Budget
-    .row
-      .col-md-6
-        p.lead The #[a(href="/budget-process.html#13" title="Timeline: Midcycle Budget Amendment") midcycle budget adjustment] for Fiscal Year 2016-17 was adopted by the City Council on #[a(href="https://oakland.legistar.com/LegislationDetail.aspx?ID=2735966&GUID=9BE58EBA-534D-403F-9F32-14B0206BF965&Options=&Search=" title="City Council: FY 2016-17 Midcycle Budget Amendments") June 21, 2016].
-        p.lead Open Budget: Oakland publishes visualizations that allow the public to explore the adopted budget soon after we receive data from the city. See Oakland's <a href='/budget-visuals.html'>previous budgets</a>, as well as Oakland’s <a href='https://magic.piktochart.com/output/5111124-oakland-5-year-forecast-16-20-' target='_blank'>five-year forecast</a>.
+block datasource
+  h6
+    | Expense data source:&nbsp;
+    a(href = "http://open.ua.edu/") http://open.ua.edu
+  h6
+    | Revenue data source:&nbsp;
+    a(href = "https://finance-estus.fa.ua.edu/FinancialAccounting/FAPPub/UA%20Financial%20Reports/ua-financial-report%2015-16.pdf") UA 2015-2016 Financial Report
 
-        p
-        a.twitter-timeline(height=700, href='https://twitter.com/search?q=%23OAKbudget', data-widget-id='324560527676276736') Tweets about "#OAKbudget"
-          script.
-            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+block disqus_config
+  script(type="text/javascript").
+    var disqus_identifier = "2015-17-adopted-budget-flow";
 
-
-      .col-md-6
-        a(href="/2016-17-adjusted-budget-flow.html")
-          h3 Cash Flow
-          p Understand the big picture: where money comes from, and where it goes.
-          img.img-responsive.thumbnail(src="/images/flow-thumb-1517.jpg")
-
-        a(href="/2016-17-adjusted-budget-tree.html")
-          h3 Detailed Breakdown
-          p Drill down into detailed spending and revenue data for each department.
-          img.img-responsive.thumbnail(src="/images/tree-thumb-1517.jpg")
-
-        a(href="/budget-process.html")
-          h3 You Are Here
-          p A timeline of Oakland's budget process.
-          img.img-responsive.thumbnail(src="/images/thumbnail-timeline.png")
-
+block get_datafiles
+  script(type="text/javascript").
+    var datafiles = [
+      {filename: "FY15-16__UA.csv"}
+    ];
