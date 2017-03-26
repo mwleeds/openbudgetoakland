@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width')
+    link(rel="stylesheet" href="css/main.css")
+    title= title
+    if environment == "production"
+      script.
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-35908939-3', 'openbudgetoakland.org');
+          ga('send', 'pageview');
+
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js").
+    script(src='https://code.jquery.com/jquery-migrate-1.2.1.js')
+    script(src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js").
+    script(src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.5/d3.min.js").
+
+  body(class='#{slug}')
+    #wrapper
+      nav.main-nav
+        .navbar.navbar-default.navbar-fixed-top
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+              a.navbar-brand(href='https://mwleeds.github.io/openbudgetua/') Open Budget: UA
+
+      != yield
+      #wrapper-footer
+
+    footer#footer
+      .container
+        .row
+          //-a(rel="license", href="http://creativecommons.org/licenses/by-nc-sa/4.0/")
+            img(alt="Creative Commons License", style="border-width:0", src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png")
+          .col-md-6.col-sm-9
+            p 
+              | Open Budget: UA is an open-source project based on 
+              a(href="http://openbudgetoakland.org/") OpenBudget: Oakland
+            ul.list-inline
+              li
+                a(href="https://github.com/mwleeds/openbudgetua")
+                  img(src="images/global/github-icon.png")
+
+
+    link(href='https://fonts.googleapis.com/css?family=Arvo:400,700', rel='stylesheet', type='text/css')

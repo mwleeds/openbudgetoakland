@@ -1,0 +1,53 @@
+{
+  "globals": {
+    "title": "Open Budget: UA",
+    "uri": "http://openbudgetoakland.com"
+  },
+
+  "index": {
+    "title": "Open Budget: UA",
+    "slug": "home"
+  },
+
+  "what-we-do": {
+    "title": "What and How - Open Budget: UA"
+  },
+
+  "who-we-are": {
+    "title": "Who We Are - Open Budget: UA"
+  },
+
+  "news": {
+    "title": "News - Open Budget: UA"
+  },
+
+  "contact": {
+    "title": "Contact Us - Open Budget: UA"
+  },
+
+  "discuss": {
+    "title": "Discuss - Open Budget: UA"
+  },
+
+  "feedback": {
+    "title": "Feedback - Open Budget: UA"
+  },
+
+  "oakland-budget-101": {
+    "title": "Oakland Budget 101 - Open Budget: UA"
+  },
+
+  "tools-projects": {
+    "title": "Tools & Projects - Open Budget: UA"
+  },
+
+  "budget-visuals": {
+    "title": "Budget Visualizations - Open Budget: UA"
+  },
+
+
+
+  "2015-16-budget-flow": {
+    "title": "2015-16 Fiscal Year - Open Budget: UA"
+  }
+}
