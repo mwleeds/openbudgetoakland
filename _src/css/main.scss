@@ -65,6 +65,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     color: #990000 !important;
 }
 
+#timeseries-chart {
+    margin: 0 auto;
+    display: block;
+}
+
 section#comments {
   margin-top: 40px;
 }

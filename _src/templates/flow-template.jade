@@ -14,10 +14,16 @@
   #sankey
     #chart
 
-  block datasource
-
   #hover_description
 
+.container
+  .row
+    .intro.col-md-12
+      h2 2015-16 FY Expenses as a Timeseries
+      p This diagram shows the total expenses for each day in FY 2016.
+      img(src="images/UA_Expense_FY_15-16_Timeseries.png" width="70%" id="timeseries-chart")
+
+  block datasource
 
 script(src='js/sankey.js', charset='utf-8')
 script(src='js/flow.js', charset='utf-8')
