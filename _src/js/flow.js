@@ -146,22 +146,21 @@ function data_wrangle(dataset, fy){
         return v.account_type == "Expense";
     });
     exp_order = [
-        "OTHER NON-OPERATING",
-        "BENEFITS",
-        "CAPITAL PURCHASES",
-        "MEETINGS AND CONFERENCES",
-        "TRAVEL",
-        "CONSTRUCTION",
-        "GL",
-        "SERVICE AND PROFESSIONAL FEES",
-        "OTHER",
-        "700013-CATEGORY???",
-        "SUPPLIES",
-        "RENTALS",
-        "MAINTENANCE AND REPAIR",
-        "UTILITIES",
-        "INTEREST EXPENSE",
-        "PAYROLL"
+        "Gl",
+        "Travel",
+        "Payroll",
+        "Supplies",
+        "Service And Professional Fees",
+        "Interest Expense",
+        "Capital Purchases",
+        "Benefits",
+        "Maintenance And Repair",
+        "Rentals",
+        "Utilities",
+        "Meetings And Conferences",
+        "Other Non-Operating",
+        "Other",
+        "Construction"
     ];
     expdivs = d3.nest()
         .key(function(d){

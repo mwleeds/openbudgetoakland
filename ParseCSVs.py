@@ -22,6 +22,7 @@ def main():
                         if row['Agency'] not in expense_sums:
                             expense_sums[row['Agency']] = {}
                         category = row['Category'].title()
+                        category = 'Other' if '???' in category else category
                         if category not in expense_sums[row['Agency']]:
                             expense_sums[row['Agency']][category] = float(row['Check Amount'])
                         else:
