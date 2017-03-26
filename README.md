@@ -1,31 +1,6 @@
-# Open Budget: Oakland
+# Open Budget: UA
 
-## Developing Locally
-
-### Harp
-
-This site is built on Harp using Node.js That means you can run it locally with minimal setup!
-
-What you'll need:
-
--  [Node](https://nodejs.org/en/download)
--  [Harp](http://harpjs.com)
-
-
-### Install & Run Harp
-
-Once you have npm installed, you can install Harp
-
-```
-# to install harp for the first time
-npm install harp -g
-```
-
-```
-# To start the Harp server, cd to the _src directory
-cd [repo-location]/_src
-harp server
-```
+Open Budget: UA is a project that seeks to make visualizations of The University of Alabama's financial data. It is based on [Open Budget Oakland](http://openbudgetoakland.com) and was created during [CrimsonHacks](http://crimsonhacks.com/) 2017.
 
 ## Making Changes
 
@@ -63,19 +38,34 @@ This project is coded with:
 1. Instructions for generating the necessary data files can be found [here](_treemap/README.md). Add them to the `data/tree/` directory following the naming convention seen in the existing files.
 1. Update the `datafiles` content block with the appropriate metadata and file path for the data files you generated.
 
-## Publishing Changes
-Make changes on your personal fork or branch. If you have repo access, and your changes are ready for review, you can merge them into the development branch and publish to the staging site for review. You can also publish changes to your own server and merge to development afterwards.
+## Developing Locally
 
-### Publishing to Staging
-If you have access to the openoakland repo, you can easily publish a preview of your changes to [staging.openbudgetoakland.org](http://staging.openbudgetoakland.org) with the script below.
+### Harp
+
+This site is built on Harp using Node.js That means you can run it locally with minimal setup!
+
+What you'll need:
+
+-  [Node](https://nodejs.org/en/download)
+-  [Harp](http://harpjs.com)
+
+
+### Install & Run Harp
+
+Once you have npm installed, you can install Harp
 
 ```
-# Run shell script to publish changes from your current branch to the staging 
-# Because of path referencing, you'll need to run this script from inside the _src directory for now
-bash ../_publish-preview.sh
+# to install harp for the first time
+npm install harp -g
 ```
 
-### Publishing to Production
+```
+# To start the Harp server, cd to the _src directory
+cd [repo-location]/_src
+harp server
+```
+
+## Publishing to Production
 
 Even though Harp runs locally, static files need to be compiled for the live site (hosted on Github pages).
 Once you have made all your changes, you'll need to compile everything in order for it to run on gh-pages. Because of how Harp compiles (that it clears the target directory), this workflow gets a bit wonky. We'll try to make it a little less fragile if people begin publishing changes more often.
@@ -102,15 +92,11 @@ harp compile ./ ../
 cd ../
 git add -A
 git commit -m "deploy"
-  
-# push changes to remote gh-pages branch using *gasp* --force! 
+
+# push changes to remote gh-pages branch using *gasp* --force!
 # !!! Never push --force on any public branch besides gh-pages!
-git push --set-upstream origin gh-pages --force  
+git push --set-upstream origin gh-pages --force
 
 # make sure your changes are showing up and you didn't break anything
 ```
 
-# merge your changes from your branch or development into master
-git merge origin/development
-
-If you are on a forked branch, create a pull request to have your changes reviewed for merge!
