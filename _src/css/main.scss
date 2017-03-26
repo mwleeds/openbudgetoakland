@@ -56,7 +56,14 @@ nav.main-nav {
     text-align: center;
     width: 100%;
 }
-.navbar-brand {float:none;}
+.navbar-brand {
+    float:none;
+    color: #990000 !important;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #990000 !important;
+}
 
 section#comments {
   margin-top: 40px;
