@@ -88,9 +88,9 @@ function data_wrangle(dataset, fy){
     })
     rev_order = [
         "Auxiliary Sales and Services",
+        "Tution and Fees",
         "Federal Grants and Contracts",
         "Private Grants and Contracts",
-        "Tution and Fees",
         "Sales and Services of Educational Activities",
         "Local Grants and Contracts",
         "Other Operating Revenues",
@@ -146,11 +146,11 @@ function data_wrangle(dataset, fy){
         return v.account_type == "Expense";
     });
     exp_order = [
-        "Gl",
-        "Travel",
+        "Construction",
         "Payroll",
         "Supplies",
         "Service And Professional Fees",
+        "Travel",
         "Interest Expense",
         "Capital Purchases",
         "Benefits",
@@ -159,8 +159,8 @@ function data_wrangle(dataset, fy){
         "Utilities",
         "Meetings And Conferences",
         "Other Non-Operating",
-        "Other",
-        "Construction"
+        "Gl",
+        "Other"
     ];
     expdivs = d3.nest()
         .key(function(d){
