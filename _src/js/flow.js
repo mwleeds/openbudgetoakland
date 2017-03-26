@@ -23,7 +23,7 @@ svg.append("text")
 
 // define color scales
 var fundColors = d3.scale.ordinal()
-    .domain(["The University of Alabama", "UA System Office"])
+    .domain(["UA", "UA System Office"])
     .range(["#276419", "#4db029"]);
     // .range(["#276419", "#b8e186"]);
 var erColors = d3.scale.ordinal()
@@ -39,7 +39,7 @@ svg.append('linearGradient')
     .selectAll("stop")
     .data([
         {offset: "10%", color: erColors("revenue")},
-        {offset: "90%", color: fundColors("The University of Alabama")}
+        {offset: "90%", color: fundColors("UA")}
     ])
     .enter().append("stop")
     .attr("offset", function(d) { return d.offset; })
@@ -74,7 +74,7 @@ svg.append('linearGradient')
     .attr("x2", '100%').attr("y2", 0)
     .selectAll("stop")
     .data([
-        {offset: "10%", color: fundColors("The University of Alabama")},
+        {offset: "10%", color: fundColors("UA")},
         {offset: "90%", color: erColors("expense")}
     ])
     .enter().append("stop")
@@ -110,7 +110,7 @@ function data_wrangle(dataset, fy){
         })
         .key(function(d){
             if (d.fund_code == "1010") {
-                return "The University of Alabama";
+                return "UA";
             } else {
                 return "UA System Office";
             }
@@ -123,7 +123,7 @@ function data_wrangle(dataset, fy){
             return values;
         })
         .entries(rev);
-    nodes = [{"name": "The University of Alabama", "type": "fund", "order": 0}, {"name": "UA System Office", "type": "fund", "order": 1}];
+    nodes = [{"name": "UA", "type": "fund", "order": 0}, {"name": "UA System Office", "type": "fund", "order": 1}];
     nodeoffset = nodes.length;
     links = [];
     for (var i = 0; i < revcats.length; i++){
@@ -133,7 +133,7 @@ function data_wrangle(dataset, fy){
                 "source": i + nodeoffset,
                 "value": revcats[i].values[x].values.total,
             };
-            if (revcats[i].values[x].key == "The University of Alabama"){
+            if (revcats[i].values[x].key == "UA"){
                 link.target = 0;
             } else if (revcats[i].values[x].key == "UA System Office") {
                 link.target = 1;
@@ -174,7 +174,7 @@ function data_wrangle(dataset, fy){
         })
         .key(function(d){
             if (d.fund_code == "1010") {
-                return "The University of Alabama";
+                return "UA";
             } else {
                 return "UA System Office";
             }
@@ -194,7 +194,7 @@ function data_wrangle(dataset, fy){
                 "target": i + nodeoffset + revcats.length,
                 "value": expdivs[i].values[x].values.total,
             };
-            if (expdivs[i].values[x].key == "The University of Alabama"){
+            if (expdivs[i].values[x].key == "UA"){
                 link.source = 0;
             } else if (expdivs[i].values[x].key == "UA System Office") {
                 link.source = 1;
@@ -237,13 +237,13 @@ function do_with_budget(data) {
           return Math.max(1, d.dy); })
       .style("stroke", function(d){
           switch (d.target.name){
-              case "The University of Alabama":
+              case "UA":
                   return "url('#gradientRtoGF')";
               case "UA System Office":
                   return "url('#gradientRtoNF')";
           }
           switch (d.source.name) {
-              case "The University of Alabama":
+              case "UA":
                   return "url('#gradientGFtoE')";
               case "UA System Office":
                   return "url('#gradientNFtoE')";
