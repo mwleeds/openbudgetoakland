@@ -21,10 +21,11 @@ def main():
                     if row['Fiscal Year'] == '2016':
                         if row['Agency'] not in expense_sums:
                             expense_sums[row['Agency']] = {}
-                        if row['Category'] not in expense_sums[row['Agency']]:
-                            expense_sums[row['Agency']][row['Category']] = float(row['Check Amount'])
+                        category = row['Category'].title()
+                        if category not in expense_sums[row['Agency']]:
+                            expense_sums[row['Agency']][category] = float(row['Check Amount'])
                         else:
-                            expense_sums[row['Agency']][row['Category']] += float(row['Check Amount'])
+                            expense_sums[row['Agency']][category] += float(row['Check Amount'])
         for agency in expense_sums:
             for department in expense_sums[agency]:
                 account_category = ''
