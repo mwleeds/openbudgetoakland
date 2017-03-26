@@ -23,7 +23,7 @@ svg.append("text")
 
 // define color scales
 var fundColors = d3.scale.ordinal()
-    .domain(["General Fund", "Non-discretionary funds"])
+    .domain(["The University of Alabama", "UA System Office"])
     .range(["#276419", "#4db029"]);
     // .range(["#276419", "#b8e186"]);
 var erColors = d3.scale.ordinal()
@@ -39,7 +39,7 @@ svg.append('linearGradient')
     .selectAll("stop")
     .data([
         {offset: "10%", color: erColors("revenue")},
-        {offset: "90%", color: fundColors("General Fund")}
+        {offset: "90%", color: fundColors("The University of Alabama")}
     ])
     .enter().append("stop")
     .attr("offset", function(d) { return d.offset; })
@@ -51,7 +51,7 @@ svg.append('linearGradient')
     .selectAll("stop")
     .data([
         {offset: "10%", color: erColors("revenue")},
-        {offset: "90%", color: fundColors("Non-discretionary funds")}
+        {offset: "90%", color: fundColors("UA System Office")}
     ])
     .enter().append("stop")
     .attr("offset", function(d) { return d.offset; })
@@ -62,7 +62,7 @@ svg.append('linearGradient')
     .attr("x2", '100%').attr("y2", 0)
     .selectAll("stop")
     .data([
-        {offset: "10%", color: fundColors("Non-discretionary funds")},
+        {offset: "10%", color: fundColors("UA System Office")},
         {offset: "90%", color: erColors("expense")}
     ])
     .enter().append("stop")
@@ -74,7 +74,7 @@ svg.append('linearGradient')
     .attr("x2", '100%').attr("y2", 0)
     .selectAll("stop")
     .data([
-        {offset: "10%", color: fundColors("General Fund")},
+        {offset: "10%", color: fundColors("The University of Alabama")},
         {offset: "90%", color: erColors("expense")}
     ])
     .enter().append("stop")
@@ -87,25 +87,16 @@ function data_wrangle(dataset, fy){
         return v.budget_year == fy
     })
     rev_order = [
-      // keep variations of the same label on a single line
-      "Property Tax", 
-      "Business License Tax", 
-      "Sales Tax",
-      "Utility Consumption Tax", 
-      "Real Estate Transfer Tax",
-      "Fines & Penalties", 
-      "Parking Tax", 
-      "Transient Occupancy Tax",
-      "Service Charges", 
-      "Transfers from Fund Balance", 
-      "Miscellaneous Revenue", "Miscellaneous",
-      "Interest Income", 
-      "Licenses & Permits",
-      "Interfund Transfers", 
-      "Grants & Subsidies", 
-      "Local (Parcel) Taxes", "Local Tax", 
-      "Internal Service Funds",
-      "Gas Tax", "Gasoline Tax",
+        "Auxiliary Sales and Services",
+        "Federal Grants and Contracts",
+        "Private Grants and Contracts",
+        "Tution and Fees",
+        "Sales and Services of Educational Activities",
+        "Local Grants and Contracts",
+        "Other Operating Revenues",
+        "State Grants and Contracts",
+        "Additions to Permanent Endowments",
+        "Capital Gifts and Grants"
     ];
     rev = newdata.filter(function(v,i,a){
         return v.account_type == "Revenue";
@@ -119,9 +110,9 @@ function data_wrangle(dataset, fy){
         })
         .key(function(d){
             if (d.fund_code == "1010") {
-                return "General Fund";
+                return "The University of Alabama";
             } else {
-                return "Non-discretionary funds";
+                return "UA System Office";
             }
         })
         .rollup(function(v){
@@ -132,7 +123,7 @@ function data_wrangle(dataset, fy){
             return values;
         })
         .entries(rev);
-    nodes = [{"name": "General Fund", "type": "fund", "order": 0}, {"name": "Non-discretionary funds", "type": "fund", "order": 1}];
+    nodes = [{"name": "The University of Alabama", "type": "fund", "order": 0}, {"name": "UA System Office", "type": "fund", "order": 1}];
     nodeoffset = nodes.length;
     links = [];
     for (var i = 0; i < revcats.length; i++){
@@ -142,9 +133,9 @@ function data_wrangle(dataset, fy){
                 "source": i + nodeoffset,
                 "value": revcats[i].values[x].values.total,
             };
-            if (revcats[i].values[x].key == "General Fund"){
+            if (revcats[i].values[x].key == "The University of Alabama"){
                 link.target = 0;
-            } else if (revcats[i].values[x].key == "Non-discretionary funds") {
+            } else if (revcats[i].values[x].key == "UA System Office") {
                 link.target = 1;
             }
             links.push(link);
@@ -155,31 +146,22 @@ function data_wrangle(dataset, fy){
         return v.account_type == "Expense";
     });
     exp_order = [
-        // keep variations of the same label on a single line
-        "Police Department", "Police",
-        "Race & Equity",
-        "Fire Department", "Fire",
-        "City Council",
-        "Administrative Services",
-        "Oakland Parks & Recreation", "Parks & Recreation",
-        "Human Services",
-        "City Auditor",
-        "Community Services",
-        "Information Technology",
-        "Public Ethics Commission",
-        "Finance", "Finance Department",
-        "City Clerk",
-        "Capital Improvement Projects",
-        "Mayor",
-        "Economic & Workforce Development",
-        "City Administrator",
-        "Human Resources Management", "Human Resources",
-        "Planning & Building",
-        "City Attorney",
-        "Housing & Community Development",
-        "Library", "Oakland Public Library",
-        "Public Works", "Oakland Public Works",
-        "Debt Service & Misc."
+        "OTHER NON-OPERATING",
+        "BENEFITS",
+        "CAPITAL PURCHASES",
+        "MEETINGS AND CONFERENCES",
+        "TRAVEL",
+        "CONSTRUCTION",
+        "GL",
+        "SERVICE AND PROFESSIONAL FEES",
+        "OTHER",
+        "700013-CATEGORY???",
+        "SUPPLIES",
+        "RENTALS",
+        "MAINTENANCE AND REPAIR",
+        "UTILITIES",
+        "INTEREST EXPENSE",
+        "PAYROLL"
     ];
     expdivs = d3.nest()
         .key(function(d){
@@ -193,9 +175,9 @@ function data_wrangle(dataset, fy){
         })
         .key(function(d){
             if (d.fund_code == "1010") {
-                return "General Fund";
+                return "The University of Alabama";
             } else {
-                return "Non-discretionary funds";
+                return "UA System Office";
             }
         })
         .rollup(function(v){
@@ -213,9 +195,9 @@ function data_wrangle(dataset, fy){
                 "target": i + nodeoffset + revcats.length,
                 "value": expdivs[i].values[x].values.total,
             };
-            if (expdivs[i].values[x].key == "General Fund"){
+            if (expdivs[i].values[x].key == "The University of Alabama"){
                 link.source = 0;
-            } else if (expdivs[i].values[x].key == "Non-discretionary funds") {
+            } else if (expdivs[i].values[x].key == "UA System Office") {
                 link.source = 1;
             }
             links.push(link);
@@ -256,15 +238,15 @@ function do_with_budget(data) {
           return Math.max(1, d.dy); })
       .style("stroke", function(d){
           switch (d.target.name){
-              case "General Fund":
+              case "The University of Alabama":
                   return "url('#gradientRtoGF')";
-              case "Non-discretionary funds":
+              case "UA System Office":
                   return "url('#gradientRtoNF')";
           }
           switch (d.source.name) {
-              case "General Fund":
+              case "The University of Alabama":
                   return "url('#gradientGFtoE')";
-              case "Non-discretionary funds":
+              case "UA System Office":
                   return "url('#gradientNFtoE')";
           }
 
