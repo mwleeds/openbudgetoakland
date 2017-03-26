@@ -123,7 +123,7 @@ function data_wrangle(dataset, fy){
             return values;
         })
         .entries(rev);
-    nodes = [{"name": "UA", "type": "fund", "order": 0}, {"name": "UA System Office", "type": "fund", "order": 1}];
+    nodes = [{"name": "UA", "type": "fund", "order": 0}];
     nodeoffset = nodes.length;
     links = [];
     for (var i = 0; i < revcats.length; i++){
